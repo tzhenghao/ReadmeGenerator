@@ -12,6 +12,11 @@ Installation
 Usage
 -----------------
 
+If you receive an error saying that -bash: ./readmeGenerator.sh: Permission denied,
+you will have to run chmod u+x readmeGenerator first, then run ./readmeGenerator.sh 
+again. This is because we need to give the file/program write accessibility first 
+before it can be modified.
+
 More Program Options
 -----------------
 
