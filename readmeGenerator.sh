@@ -16,7 +16,7 @@ for i in $(seq "$size"); do
   set $header
 done
 
-echo "Software used?"
+echo "\nSoftware used?"
 read software
 
 software_arr=()
@@ -31,7 +31,7 @@ while true; do
   software_arr+=("$software")
 
   # Prompts for next software
-  echo "And then?"
+  echo "\nAnd then?"
   read software
 done
 
