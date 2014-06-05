@@ -31,7 +31,7 @@ while true; do
   software_arr+=("$software")
 
   # Prompts for next software
-  echo -e "\nAnd then?"
+  echo -e "\nAnymore?"
   read software
 done
 
