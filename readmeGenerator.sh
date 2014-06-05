@@ -14,11 +14,9 @@ read software
 
 software_arr=()
 
-while true
-do
+while true; do
   # Breaks and ignores rest of loop on 'done'
-  if [ "$software" == "done" ]
-  then
+  if [ "$software" == "done" ]; then
     break
   fi
   
@@ -43,8 +41,7 @@ software_list="\n\n"
 # Incremented each iteration
 num=1
 # Iterates through software array and makes nicely formatted list
-for i in "${software_arr[@]}"
-do
+for i in "${software_arr[@]}"; do
   # Concatenates previous item with next
   software_list=$software_list"$((num++)). $i\n"
   
@@ -93,8 +90,7 @@ echo -e "$readme"
 
 # Gets present working directory and stringifies it
 pwd_="`pwd`"
-if [ -f $pwd_/README.md ]
-then
+if [ -f $pwd_/README.md ]; then
   echo "ERROR: You already have a README.md!"
 else
   echo -e "$readme" > README.md
