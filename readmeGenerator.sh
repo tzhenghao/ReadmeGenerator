@@ -7,6 +7,8 @@
 echo "Project title?"
 read title
 
+# Gets the size of the title
+# Corresponds with a header of same length
 size=${#title}
 header=""
 for i in $(seq "$size"); do
