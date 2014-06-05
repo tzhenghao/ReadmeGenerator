@@ -91,7 +91,13 @@ readme=$readme1$software_list$readme2
 # Does pretty-printing of $readme with newlines
 echo -e "$readme"
 
-# Creates the README.md
-# Don't run this and replace your current!
-echo -e "$readme" > README.md
+# Gets present working directory and stringifies it
+pwd_="`pwd`"
+if [ -f $pwd_/README.md ]
+then
+  echo "ERROR: You already have a README.md!"
+else
+  echo -e "$readme" > README.md
+  echo "README.md generated."
+fi
 
