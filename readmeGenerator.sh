@@ -5,8 +5,56 @@
 # This shell script generates a templated README file with the format below:
 header='================='
 subheader='-----------------'
-readme=$(cat <<- EOF
-	(Insert title here)
+
+echo "Project title?"
+read title
+
+echo "Software used?"
+read software
+
+software_arr=()
+
+while true
+do
+  # Breaks and ignores rest of loop on 'done'
+  if [ "$software" == "done" ]
+  then
+    break
+  fi
+  
+  # Adds newly-read $software into array
+  software_arr+=($software)
+  # Makes the assignment permanent
+  set $software_arr
+  set $software
+  # Prompts for next software
+  echo "And then?"
+  read software
+done
+
+# Array of software
+software_arr=("${software_arr[@]}")
+
+# It's odd why I can't add newlines into $readme1
+# So I'm adding them here
+software_list="\n\n"
+
+# First number of the list
+# Incremented each iteration
+num=1
+# Iterates through software array and makes nicely formatted list
+for i in "${software_arr[@]}"
+do
+  # Concatenates previous item with next
+  software_list=$software_list"$((num++)). $i\n"
+  
+  # Makes assignment permanent
+  set $software_list
+done
+
+# First section, added $title
+readme1=$(cat <<- EOF
+	$title
 	$header
 
 	Introduction
@@ -20,14 +68,14 @@ readme=$(cat <<- EOF
 
 	More Program Options
 	$subheader
-
+	
 	Software Used
 	$subheader
+	
+EOF
+)
 
-	1.
-	2.
-	3.
-	4. 
+readme2=$(cat <<- EOF
 
 	Support
 	$subheader
@@ -37,5 +85,13 @@ readme=$(cat <<- EOF
 EOF
 )
 
+# Concatenates first, second and software section into $readme
+readme=$readme1$software_list$readme2
+
+# Does pretty-printing of $readme with newlines
+echo -e "$readme"
+
+# Creates the README.md
+# Don't run this and replace your current!
 echo -e "$readme" > README.md
 
