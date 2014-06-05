@@ -16,7 +16,7 @@ for i in $(seq "$size"); do
   set $header
 done
 
-echo "\nSoftware used?"
+echo -e "\nSoftware used?"
 read software
 
 software_arr=()
@@ -31,7 +31,7 @@ while true; do
   software_arr+=("$software")
 
   # Prompts for next software
-  echo "\nAnd then?"
+  echo -e "\nAnd then?"
   read software
 done
 
@@ -91,7 +91,8 @@ EOF
 readme=$readme1$software_list$readme2
 
 # Does pretty-printing of $readme with newlines
-echo -e "$readme"
+# Added newline for brevity
+echo -e "\n$readme"
 
 # Gets present working directory and stringifies it
 pwd_="`pwd`"
