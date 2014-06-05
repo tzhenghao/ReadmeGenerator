@@ -5,7 +5,7 @@
 # This shell script generates a templated README file with the format below:
 header='================='
 subheader='-----------------'
-cat <<- eof
+cat <<- EOF
 	(Insert title here)
 	$header
 
@@ -34,4 +34,4 @@ cat <<- eof
 
 	If you have any questions/concerns, please feel free to contact me.
 	My email address is tanzhao@umich.edu
-eof
+EOF
