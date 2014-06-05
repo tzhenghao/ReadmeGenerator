@@ -21,10 +21,8 @@ while true; do
   fi
   
   # Adds newly-read $software into array
-  software_arr+=($software)
-  # Makes the assignment permanent
-  set $software_arr
-  set $software
+  software_arr+=("$software")
+
   # Prompts for next software
   echo "And then?"
   read software
