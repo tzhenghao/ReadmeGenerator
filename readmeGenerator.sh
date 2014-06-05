@@ -3,11 +3,16 @@
 # Date: May 30, 2014
 #!/bin/bash
 # This shell script generates a templated README file with the format below:
-header='================='
-subheader='-----------------'
 
 echo "Project title?"
 read title
+
+size=${#title}
+header=""
+for i in $(seq "$size"); do
+  header=$header"="
+  set $header
+done
 
 echo "Software used?"
 read software
@@ -53,19 +58,19 @@ readme1=$(cat <<- EOF
 	$header
 
 	Introduction
-	$subheader
+	------------
 
 	Installation
-	$subheader
+	------------
 
 	Usage
-	$subheader
+	-----
 
 	More Program Options
-	$subheader
+	--------------------
 	
 	Software Used
-	$subheader
+	-------------
 	
 EOF
 )
@@ -73,7 +78,7 @@ EOF
 readme2=$(cat <<- EOF
 
 	Support
-	$subheader
+	-------
 
 	If you have any questions/concerns, please feel free to contact me.
 	My email address is tanzhao@umich.edu
